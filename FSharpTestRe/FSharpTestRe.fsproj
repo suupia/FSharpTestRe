@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- <TargetFramework>net472</TargetFramework>  -->
+    <TargetFramework>net6.0</TargetFramework>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies> -->
+    <BaseOutputPath>D:\Unity\UnityProjects\FSharpTestRe\Assets\FSharpScripts</BaseOutputPath>
+    <WarnOn>3390;$(WarnOn)</WarnOn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Library1.fs" />
+    <None Include="Script.fsx" />
+  </ItemGroup>
+
+    <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.11f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Copy SourceFiles="C:\Users\user\.nuget\packages\fsharp.core\6.0.6\lib\netstandard2.1\FSharp.Core.dll" DestinationFolder="$(ProjectDir)../Assets/FSharpScripts/" SkipUnchangedFiles="true" />
+  </Target>  
+</Project>
+
+
+
+
+
